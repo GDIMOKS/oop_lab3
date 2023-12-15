@@ -11,10 +11,4 @@
       <ProjectReference Include="..\Models\Models.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Dtos\" />
-      <Folder Include="Interfaces\" />
-      <Folder Include="Realization\" />
-    </ItemGroup>
-
 </Project>
