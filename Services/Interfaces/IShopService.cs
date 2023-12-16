@@ -11,5 +11,7 @@ public interface IShopService
     List<ProvideProductsDto> CheckMROT(int shopCode, decimal cash);
 
     decimal MakePurchase(int shopCode, List<PurchaseProductDto> dtos);
+    ShopSumDto? CheckMinSum(List<PurchaseProductDto> dtos);
+
 
 }

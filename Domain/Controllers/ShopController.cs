@@ -41,4 +41,11 @@ public class ShopController : ControllerBase
         var sum = _shopService.MakePurchase(code, dtos);
         return sum == -1 ? Ok("Данный заказ невозможен, не хватает товаров!") : Ok($"Сумма заказа: {sum}");
     }
+    
+    /*[HttpPost("/check")]
+    public IActionResult CheckMinSum([FromBody]List<PurchaseProductDto> dtos)
+    {
+        var shop = _shopService.CheckMinSum(dtos);
+        return shop == null ? Ok("Невозможно") : Ok($"Сумма заказа: {shop.Sum}");
+    }*/
 }

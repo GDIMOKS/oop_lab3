@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Models;
 using Services.Dtos.Product;
+using Services.Dtos.Shop;
 using Services.Interfaces;
 
 namespace Services.Realization;
@@ -101,6 +102,24 @@ public class ShopService : IShopService
         if (sum != -1)
             _dbContext.SaveChanges();
         return sum;
+    }
+
+    public ShopSumDto? CheckMinSum(List<PurchaseProductDto> dtos)
+    {
+        /*var shops = _dbContext.ShopProducts
+            .GroupBy(x => x.ShopCode)
+            .Where(x => dtos.IntersectBy(x.));
+
+        var neededShops = new List<ShopSumDto>();
+        foreach (var shop in shops)
+        {
+            foreach (var shopProduct in shop)
+            {
+                
+            }
+        }*/
+        
+        return new ShopSumDto();
     }
 
 
