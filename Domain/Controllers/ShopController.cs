@@ -23,9 +23,22 @@ public class ShopController : ControllerBase
         _shopService.AddShop(dto.Code, dto.Name, dto.Address);
     }
     
-    [HttpPost("/supply/{id}")]
-    public void AddProduct([FromRoute]int id,[FromBody]List<ProvideProductsDto> dto)
+    [HttpPost("/supply/{code}")]
+    public void AddProduct([FromRoute]int code,[FromBody]List<ProvideProductsDto> dto)
     {
-        _shopService.AddProductsSupply(id, dto);
+        _shopService.AddProductsSupply(code, dto);
+    }
+
+    [HttpPost("/mrot/{code}")]
+    public IEnumerable<ProvideProductsDto> GetMrot([FromRoute]int code, [FromBody]decimal cash)
+    {
+        return _shopService.CheckMROT(code, cash);
+    }
+    
+    [HttpPost("/purchase/{code}")]
+    public IActionResult MakePurchase([FromRoute]int code, [FromBody]List<PurchaseProductDto> dtos)
+    {
+        var sum = _shopService.MakePurchase(code, dtos);
+        return sum == -1 ? Ok("Данный заказ невозможен, не хватает товаров!") : Ok($"Сумма заказа: {sum}");
     }
 }
